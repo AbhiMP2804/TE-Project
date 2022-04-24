@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT-Detection</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{{url_for("static",filename="css/style1.css")}}">
+
+</head>
+<body>
+<!-- header section starts  -->
+
+<header class="header">
+   
+    <a href="{{url_for('homepage')}}" class="logo"> <i class="fas fa-heartbeat"></i> Brain Tumor Detection </a>
+
+    <nav class="navbar">
+        <a href="{{url_for('homepage')}}">home</a>
+        <a href="#book">MRI-Check</a>
+        
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('profile')}}">profile</a>
+        <a href="{{url_for('about')}}">About-us</a>
+        {%endif%}
+        
+       
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('logout')}}">Logout</a>
+        {%else %}
+        <a href="{{url_for('register')}}">Register</a>
+        <a href="{{url_for('login')}}">Login</a>
+        {%endif%}
+    
+</nav>
+    <!-- <div id="menu-btn" class="fas fa-bars"></div>
+    <div class="container w-50">
+        <h4>{%with messages=get_flashed_messages(with_categories=true)%} {%if
+        messages%} {%for category,message in messages%}
+        <div class="alert alert-{{category}}">{{message}}</div>
+        {%endfor%} {%endif%} {%endwith%}
+    </div> -->
+    
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" style="background-color: rgb(212, 228, 140);" id="home" href="{{url_for('homepage')}}">
+
+    <div class="image">
+        
+        <img src="{{url_for("static",filename="image/home-img.svg")}}" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Know Early, Treat Well
+        </h3>
+        <p>This website helps you to detect brain tumors at an early stage.
+            So that treatment can begin as early as possible.
+            </p>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- icons section starts  -->
+
+
+
+<!-- icons section ends -->
+
+
+<!-- booking section starts   -->
+
+<section class="book" style="background-color: rgb(212, 228, 140);" id="book">
+
+    <h1 class="heading"> <span>Scan</span> image</h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="{{url_for("static",filename="image/book-img.svg")}}" alt="">
+        </div>
+
+        <form action="">
+            <h3>Scan MRI</h3>
+            <a href="{{url_for('test')}}"> <button type="button" class="btn">Test Now!</button> </a>
+        </form>
+
+    </div>
+
+</section>
+
+<!-- booking section ends -->
+
+<!-- services section starts  -->
+
+<!-- <section class="services" id="services">
+
+    <h1 class="heading"> our <span>services</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fas fa-notes-medical"></i>
+            <h3>Free MRI scan Report</h3>
+            <p></p>
+          
+        </div>
+
+        <div class="box">
+            <i class="fas fa-ambulance"></i>
+            <h3>24/7 ambulance</h3>
+            <p></p>
+           
+        </div>
+
+        <div class="box">
+            <i class="fas fa-user-md"></i>
+            <h3>Expert Consultancy</h3>
+            <p></p>
+        
+        </div>
+
+        <div class="box">
+            <i class="fas fa-pills"></i>
+            <h3>Type of Brain Tumor Analysis
+            </h3>
+            <p></p>
+            
+        </div>
+
+        
+
+    </div>
+
+</section> -->
+
+<!-- services section ends -->
+
+<!-- about section starts  -->
+<!-- 
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="{{url_for("static",filename="image/about-img.svg")}}"  alt="">
+        </div>
+
+        <div class="content">
+            <h3>we take care of your healthy life</h3>
+            <p>We take care of your Brain
+                This website helps you to detect brain tumors from MRI scans.
+               It will also identify the type of brain tumor. You can use this website for early detection and also as a second opinion to confirm the brain tumor before you start your medication.
+               </p>
+            <p>This website uses a machine learning based trained model for the testing basis which gives accuracy upto great percentage.
+            </p>
+        </div>
+
+    </div>
+
+</section> -->
+
+<!-- about section ends -->
+
+<!-- doctors section starts  -->
+
+
+
+<!-- doctors section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" style="background-color: rgb(212, 228, 140);" id="review">
+    
+    <h1 class="heading"> client's <span>review</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="" alt="">
+            <h3>Abhishek Patwardhan</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">It is really a good attempt as it saves time for patients to wait for doctors appointments</p>
+        </div>
+
+        <div class="box">
+            <img src="" alt="">
+            <h3>Siddhi</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">It is a good alternative for the second opinion that people usually take in terms of such tumors.</p>
+        </div>
+
+        <div class="box">
+            <img src="" alt="">
+            <h3>Dhruv</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="text">I appreciate the machine learning model as it identifies the type of brain tumor along with detection</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs" style="background-color: rgb(212, 228, 140);" id="blogs">
+
+    <h1 class="heading"> our <span>References</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+            </div>
+            <div class="content">
+                <p>
+                   </p>
+            <div class="content">
+                <div class="icon">
+                </div>
+                <a href="https://www.theguardian.com/lifeandstyle/2012/dec/02/brain-tumour-blog">link!</a>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                </div>
+                <a href="https://www.neurosurgery.columbia.edu/patient-care/patient-stories/dr-bruces-patient-blogs-about-surviving-deadly-brain-tumor">Link!</a>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="content">
+                <div class="icon">
+                </div>
+                <a href="https://www.cancer.net/blog/2021-04/how-sharing-my-story-helps-me-cope-with-advanced-brain-tumor-diagnosis">Link!</a>
+                <p>.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer" style="background-color: rgb(212, 228, 140);">
+
+    <div class="box-container">
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head style="background-color: rgb(212, 228, 140)">
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT-Detection</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" type="text/css"
+    href="{{url_for("static",filename='css/style1.css')}}">
+
+    <!-- header section starts  -->
+  </head>
+  <body style="background-color: rgb(212, 228, 140)";">
+    <header class="header">
+      <a href="{{url_for('homepage')}}" class="logo">
+        <i class="fas fa-heartbeat"></i> Brain Tumor Detection
+      </a>
+
+      <nav class="navbar">
+        <a href="{{url_for('homepage')}}">home</a>
+        <a href="{{url_for('test')}}">MRI-Check</a>
+        <a href="{{url_for('profile')}}">profile</a>
+        <a href="{{url_for('about')}}">About-us</a>
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('logout')}}">Logout</a>
+        {%else %}
+        <a href="{{url_for('register')}}">Register</a>
+        <a href="{{url_for('login')}}">Login</a>
+        {%endif%}
+      </nav>
+      <!-- <div id="menu-btn" class="fas fa-bars"></div>
+
+    <div class="container w-50">
+        <h4>{%with messages=get_flashed_messages(with_categories=true)%} {%if
+        messages%} {%for category,message in messages%}
+        <div class="alert alert-{{category}}">{{message}}</div>
+        {%endfor%} {%endif%} {%endwith%}
+    </div> -->
+    </header>
+    <div style="background-color: rgb(212, 228, 140)";">
+      <h1
+        style="
+          /* background-color: rgb(212, 228, 140); */
+          text-align: center;
+          color: brown;
+          font-size: 25px;
+          padding-top: 100px;
+        "
+      >
+        Personal Details
+      </h1>
+      {% for message in form.name.errors%}
+      <div>{{message}}</div>
+      {%endfor%} {% for message in form.phoneNumber.errors%}
+      <div>{{message}}</div>
+      {%endfor%}
+
+      <form method="POST" action="">
+        {{form.hidden_tag }}
+
+        <div class="table-section">
+          <table
+            style="
+              background-color: rgb(212, 228, 140);
+              /* border: 2px solid black;
+              border-radius: 5px; */
+              padding: 10px;
+              display: inline-block;
+              font-size: 20px;
+              align-items: center;
+              /* background-color: rgb(80, 255, 188); */
+              text-align: center;
+              margin-left: 500px;
+              margin-top: 40px;
+            "
+          >
+            <tr>
+              <td>{{form.name.label}}</td>
+              <td>{{form.name}}</td>
+            </tr>
+            <tr>
+              <td>{{form.age.label}}</td>
+              <td>{{form.age}}</td>
+            </tr>
+            <tr>
+              <td>{{form.bloodgroup.label}}</td>
+              <td>{{form.bloodgroup}}</td>
+            </tr>
+            <tr>
+              <td>{{form.phoneNumber.label}}</td>
+              <td>{{form.phoneNumber}}</td>
+            </tr>
+            <tr>
+              <td>GENDER</td>
+              <td>{{form.gender}}</td>
+            </tr>
+            <tr>
+              <td>{{form.address.label}}</td>
+              <td>{{form.address}}</td>
+            </tr>
+            <tr>
+              <td>{{form.prevhist.label}}</td>
+              <td>{{form.prevhist}}</td>
+            </tr>
+            <tr>
+              <td
+                style="
+                  border: 5px;
+                  border-color: black;
+                  /* background-color: brown; */
+                  border-radius: 2px;
+                  padding-left: 150px;
+                  padding-right: 40px;
+                  display: block;
+                  margin: 10px;
+                "
+              >
+                {{form.update(class="anchor-button")}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

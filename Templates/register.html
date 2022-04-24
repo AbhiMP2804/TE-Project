@@ -1,0 +1,159 @@
+{% extends 'base.html' %} {% block body %}
+<head style="background-color: aquamarine;">
+  <meta charset="UTF-8" />
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BT-Detection</title>
+
+  <!-- font awesome cdn link  -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+
+  <!-- custom css file link  -->
+  <link rel="stylesheet" type="text/css"
+  href="{{url_for("static",filename='css/style1.css')}}">
+
+  <!-- header section starts  -->
+</head>
+  <header class="header">
+    <a href="{{url_for('homepage')}}" class="logo">
+      <i class="fas fa-heartbeat"></i> Brain Tumor Detection
+    </a>
+
+    <nav class="navbar">
+      <a href="{{url_for('homepage')}}">home</a>
+      <a href="{{url_for('test')}}">MRI-Check</a>
+      {%if current_user.is_authenticated%}
+      <a href="{{url_for('about')}}">About-us</a>
+      <a href="{{url_for('profile')}}">profile</a>
+      <a href="{{url_for('logout')}}">Logout</a>
+      {%else %}
+      <a href="{{url_for('register')}}">Register</a>
+      <a href="{{url_for('login')}}">Login</a>
+      {%endif%}
+    </nav>
+    <!-- <div id="menu-btn" class="fas fa-bars"></div>
+
+  <div class="container w-50">
+      <h4>{%with messages=get_flashed_messages(with_categories=true)%} {%if
+      messages%} {%for category,message in messages%}
+      <div class="alert alert-{{category}}">{{message}}</div>
+      {%endfor%} {%endif%} {%endwith%}
+  </div> -->
+  </header>
+
+<div class="container">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color:rgb(212, 228, 140);
+      /* background-image:url({{url_for("static",filename="register_BG.jpg")}});  */
+    }
+    .signin {
+      color: black;
+      text-align: center;
+    }
+  </style>
+  <form method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset style="display: contents " class="form-group mb-5">
+      <center>
+        <legend><h1 class="text-center bg-dark mt-5"  style="color: brown; padding-top: 80px">JOIN TODAY</h1></legend>
+        <div
+          style="
+            display: block;
+            width: 100%;
+            padding-top: 30px;
+            padding-right: 20px;
+            padding-bottom: 5px;
+            padding-left: 1px;
+            border: none;
+          "
+          class="form-group"
+        >
+          <h2>{{form.username.label(class="form-control-label")}} {%if
+          form.username.errors%} {{form.username(class="form-control
+          form-control-lg is-invalid")}} {%for error in form.username.errors%}
+          <span>{{error}}</span>
+          {%endfor%} {% else %} {{form.username(class="form-control
+          form-control-lg")}} {%endif%}
+        </div>
+        <div
+          style="
+            padding-top: 10px;
+            padding-right: 50px;
+            padding-bottom: 5px;
+            padding-left: 65px;
+          "
+          class="form-group"
+        >
+         <h2>{{form.email.label(class="form-control-label")}} {%if
+          form.email.errors%} {{form.email(class="form-control form-control-lg
+          is-invalid")}} {%for error in form.email.errors%}
+          <span>{{error}}</span>
+          {%endfor%} {% else %} {{form.email(class="form-control
+          form-control-lg")}} {%endif%}
+        </div>
+        <div
+          style="
+            padding-top: 10px;
+            padding-right: 50px;
+            padding-bottom: 5px;
+            padding-left: 35px;
+          "
+          class="form-group"
+        >
+          <h2>{{form.password.label(class="form-control-label")}} {%if
+          form.password.errors%} {{form.password(class="form-control
+          form-control-lg is-invalid")}} {%for error in form.password.errors%}
+          <span>{{error}}</span>
+          {%endfor%} {% else %} {{form.password(class="form-control
+          form-control-lg")}} {%endif%}
+        </div>
+        <div
+          style="
+            padding-top: 10px;
+            padding-right: 85px;
+            padding-bottom: 5px;
+            padding-left: 1px;
+            border: none;
+          "
+          class="form-group"
+        >
+         <h2> {{form.confirm_password.label(class="form-control-label")}} {%if
+          form.confirm_password.errors%}
+          {{form.confirm_password(class="form-control form-control-lg
+          is-invalid")}} {%for error in form.confirm_password.errors%}
+          <span>{{error}}</span>
+          {%endfor%} {% else %} {{form.confirm_password(class="form-control
+          form-control-lg")}} {%endif%}
+        </div>
+      </center>
+    </fieldset>
+    <center>
+      <div
+        style="
+          display: inline-block;
+          color: aqua;
+          padding: 16px 5px;
+          margin: auto;
+          border: black;
+          cursor: pointer;
+          width: fit-content;
+          opacity: 0.9;
+        "
+        class="form-group mt-4"
+      >
+        {{form.submit(class="btn btn-success")}}
+      </div>
+      <div class="container signin">
+        <h2><p>
+          Already have an account? <a style="color: brown;" href="{{url_for('login')}}">Sign in</a>.
+        </p></h2>
+      </div>
+    </center>
+  </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %} {% block body %}
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MRI-Check</title>
+    
+    <link rel="stylesheet" type="text/css"
+    href="{{url_for("static",filename='css/style1.css')}}">
+    <style>
+      body
+      {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      /* background-image:url({{url_for("static",filename="mri_BG.jpg")}}) */
+      }
+    </style>
+  </head> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT-Detection</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" type="text/css"
+    href="{{url_for("static",filename='css/style1.css')}}">
+    <style>
+      body
+      {
+        background-color: rgb(212, 228, 140);
+      }
+    </style>
+
+    <!-- header section starts  -->
+  </head>
+    <header class="header">
+      <a href="{{url_for('homepage')}}" class="logo">
+        <i class="fas fa-heartbeat"></i> Brain Tumor Detection
+      </a>
+
+      <nav class="navbar">
+        <a href="{{url_for('homepage')}}">home</a>
+        <a href="{{url_for('test')}}">MRI-Check</a>
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('profile')}}">profile</a>
+        <a href="{{url_for('about')}}">About-us</a>
+        <a href="{{url_for('logout')}}">Logout</a>
+        {%else %}
+        <a href="{{url_for('register')}}">Register</a>
+        <a href="{{url_for('login')}}">Login</a>
+        {%endif%}
+      </nav>
+      <!-- <div id="menu-btn" class="fas fa-bars"></div>
+
+    <div class="container w-50">
+        <h4>{%with messages=get_flashed_messages(with_categories=true)%} {%if
+        messages%} {%for category,message in messages%}
+        <div class="alert alert-{{category}}">{{message}}</div>
+        {%endfor%} {%endif%} {%endwith%}
+    </div> -->
+    </header>
+  
+  <body>
+    <center>
+    <div class="container" style="background-color: rgb(212, 228, 140); padding-top: 80px;" >
+
+      <h1 class="text-center mt-3 mb-4" style="text-align: center; color:darkred;padding-top: 25px;padding-bottom: 30px;">Upload MRI Image</h1>
+      <form
+        class="p-3 text-center"
+        action="/test"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input class="form-control" type="file" name="imagefile" />
+        <input class="btn btn-success" type="Submit"  value="predict Result"/>
+        
+      </form>
+
+      {% if img_pt %}
+      <center><img src="{{img_pt}}" alt="mri image" width="200" height="150" style="padding-top: 20px;"/></center>
+      {% endif %}
+
+      {% if prediction %}
+      <h1 p class="text-center mt-4"  style="color:brown;padding-top: 20px;">{{prediction}}  was detected </p></h1>
+      {% endif %}
+
+      
+
+    </div></center>
+  </body>
+</html>
+{% endblock body %}

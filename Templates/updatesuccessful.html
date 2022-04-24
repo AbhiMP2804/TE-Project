@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head style="background-color: rgb(212, 228, 140)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <title></title>
+  </head>
+
+  <div style="background-color: rgb(212, 228, 140)">
+    <h1
+      style="
+        text-align: center;
+        color: black;
+        font-size: 25px;
+        padding-top: 100px;
+      "
+    >
+      {{current_user.username}} Personal Details
+    </h1>
+
+    <form method="post" action="">
+      {{form.hidden_tag }}
+
+      <div class="table-section">
+        <table
+          style="
+            /* border: 2px solid black;
+              border-radius: 5px; */
+            padding: 20px;
+            display: inline-block;
+            font-size: 20px;
+            align-items: center;
+            background-color: rgb(69, 172, 132);
+            text-align: center;
+            margin-left: 50px;
+            margin-top: 40px;
+          "
+        >
+          <tr>
+            <td>{{form.name.label}}</td>
+            <td style="color: brown">{{request.form.get('name')}}</td>
+          </tr>
+          <tr>
+            <td>{{form.age.label}}</td>
+            <td style="color: brown">{{request.form.get('age')}}</td>
+          </tr>
+          <tr>
+            <td>{{form.bloodgroup.label}}</td>
+            <td style="color: brown">{{request.form.get('bloodgroup')}}</td>
+          </tr>
+          <tr>
+            <td>{{form.phoneNumber.label}}</td>
+            <td style="color: brown">{{request.form.get('phoneNumber')}}</td>
+          </tr>
+          <tr>
+            <td>GENDER</td>
+            <td style="color: brown">{{request.form.get('gender')}}</td>
+          </tr>
+          <tr>
+            <td>{{form.address.label}}</td>
+            <td style="color: brown">{{request.form.get('address')}}</td>
+          </tr>
+          <tr>
+            <td>{{form.prevhist.label}}</td>
+            <td style="color: brown">{{request.form.get('prevhist')}}</td>
+          </tr>
+          <tr>
+            <td
+              style="
+                /* border: 5px;
+                  border-color: black;
+                  background-color: brown; */
+                border-radius: 2px;
+                padding-left: 200px;
+                display: block;
+                margin: 10px;
+              "
+            >
+              <!-- <form action="" method="POST">{{form.savepdf}}</form> -->
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+  <!-- <h1 style="text-align: center; font-size: 30px; color: chocolate">
+    Records Updated Successfully !!!
+  </h1> -->
+  <body style="background-color: rgb(212, 228, 140)">
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+      -->
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT-Detection</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet"
+    href="{{url_for("static",filename="css/style1.css")}}">
+  </head>
+  <body>
+    <!-- header section starts  -->
+
+    <header class="header">
+      <a href="{{url_for('homepage')}}" class="logo">
+        <i class="fas fa-heartbeat"></i> Brain Tumor Detection
+      </a>
+
+      <nav class="navbar">
+        <a href="{{url_for('homepage')}}">home</a>
+        <a href="{{url_for('test')}}">MRI-Check</a>
+        <!-- <a href="#about">About-us</a> -->
+        {%if current_user.is_authenticated%}
+        <a href="{{url_for('profile')}}">profile</a>
+        <a href="#about">About-us</a>
+        <a href="{{url_for('logout')}}">Logout</a>
+        {%else %}
+        <a href="{{url_for('register')}}">Register</a>
+        <a href="{{url_for('login')}}">Login</a>
+        {%endif%}
+      </nav>
+      <!-- <div id="menu-btn" class="fas fa-bars"></div>
+    <div class="container w-50">
+        <h4>{%with messages=get_flashed_messages(with_categories=true)%} {%if
+        messages%} {%for category,message in messages%}
+        <div class="alert alert-{{category}}">{{message}}</div>
+        {%endfor%} {%endif%} {%endwith%}
+    </div> -->
+    </header>
+    <section
+      class="about"
+      style="background-color: rgb(212, 228, 140)"
+      id="about"
+    >
+      <h1 class="heading"><span>about</span> us</h1>
+
+      <div class="row">
+        <div class="image">
+          <img src="{{url_for("static",filename="image/about-img.svg")}}"
+          alt="">
+        </div>
+
+        <div class="content">
+          <h3>we take care of your healthy life</h3>
+          <p>
+            We take care of your Brain This website helps you to detect brain
+            tumors from MRI scans. It will also identify the type of brain
+            tumor. You can use this website for early detection and also as a
+            second opinion to confirm the brain tumor before you start your
+            medication.
+          </p>
+          <p>
+            This website uses a machine learning based trained model for the
+            testing basis which gives accuracy upto great percentage.
+          </p>
+        </div>
+      </div>
+    </section>
+    <center style="background-color: rgb(212, 228, 140)">
+      <div class="image" style="background-color: rgb(212, 228, 140)">
+        <img src="{{url_for("static",filename="header.jpg")}}" alt="">
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSckUGmPpkzjUMoI-RkcnvsqWmKeDK1SPid3kszIwvZhbsq-Lw/viewform?embedded=true"
+        width="1400"
+        height="1150"
+        frameborder="0"
+        marginheight="10"
+        scrolling="no"
+        marginwidth="10"
+        >Loading…</iframe
+      >
+    </center>
+  </body>
+</html>
